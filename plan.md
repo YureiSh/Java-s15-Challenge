@@ -25,10 +25,14 @@ Fakülte ya da öğrenci üyelik kaydı olabilir.
 this book is issued to: deyip kullanıcı koyalım
 - Merak etme Reader -> memberRecord -> books issued
 
+- Book'lara owner eklendi, Reader objesi olarak.
+
 ---
 
 # Scratched Ideas
 
 - Person Interface OLAMAZ.
 name variable'ı var interface'ler variable almaz.
+- Author'lar kayıtlı olamaz.
+- Abstract person değil reader kayıdı açıyoruz.
 - 

@@ -4,33 +4,48 @@ import entity.AbstractBook;
 import entity.AbstractPerson;
 import entity.Abstract_member_Record;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 
 public class Author extends AbstractPerson {
 
-    private Abstract_member_Record memberRecord;
-
-
-
-
-    //Overloading, çünkü person olan herkes aslında üye olabilir.
-    public Author(String name, Abstract_member_Record memberRecord) {
-        super(name);
-        this.memberRecord = memberRecord;
-    }
-
     public Author(String name) {
         super(name);
     }
 
-    //Getter and Setter for member Record of Author
-    public void setMemberRecord(Abstract_member_Record memberRecord) {
-        this.memberRecord = memberRecord;
+
+    public AbstractBook newMagazine(Long book_ID, String book_Name, Double price, Double edition){
+        LocalDateTime timeNow = LocalDateTime.now();
+        AbstractBook magazine = new Magazine(book_ID,
+                getName(),
+                book_Name,
+                price,
+                edition,
+                timeNow);
+        return magazine;
     }
 
-    public Abstract_member_Record getMemberRecord() {
-        return memberRecord;
+    public AbstractBook newJournal(Long book_ID, String book_Name, Double price, Double edition){
+        LocalDateTime timeNow = LocalDateTime.now();
+        AbstractBook journal = new Journal(book_ID,
+                getName(),
+                book_Name,
+                price,
+                edition,
+                timeNow);
+        return journal;
+    }
+
+    public AbstractBook newStudyBook(Long book_ID, String book_Name, Double price, Double edition){
+        LocalDateTime timeNow = LocalDateTime.now();
+        AbstractBook studyBook = new StudyBook(book_ID,
+                getName(),
+                book_Name,
+                price,
+                edition,
+                timeNow);
+        return studyBook;
     }
 
     @Override

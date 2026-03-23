@@ -1,9 +1,11 @@
 package entity;
 
+import entity.concrete.Reader;
 import entity.enums.BOOK_STATUS;
 import utils.ValidationUtil;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 abstract public class AbstractBook {
     private Long book_ID;
@@ -13,11 +15,9 @@ abstract public class AbstractBook {
     private BOOK_STATUS status;
     private Double edition;
     private LocalDateTime date_of_purchase;
-
-
+    private Reader owner;
 
     //Constructor
-
     public AbstractBook(Long book_ID, String author, String name,
                         Double price, Double edition,
                         LocalDateTime date_of_purchase) {
@@ -50,6 +50,7 @@ abstract public class AbstractBook {
         this.price = price;
     }
 
+    //Task-6
     public void setStatus(BOOK_STATUS status) {
         this.status = status;
     }
@@ -62,16 +63,22 @@ abstract public class AbstractBook {
         this.date_of_purchase = date_of_purchase;
     }
 
+    //Task-3
+    public void setOwner(Reader owner) {
+        this.owner = owner;
+    }
 
     //Getter
     public Long getBook_ID() {
         return book_ID;
     }
 
+    //Task-2
     public String getAuthor() {
         return author;
     }
 
+    //Task-1
     public String getName() {
         return name;
     }
@@ -92,6 +99,24 @@ abstract public class AbstractBook {
         return date_of_purchase;
     }
 
+    //Task-4
+    public Reader getOwner() {
+        return owner;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        AbstractBook that = (AbstractBook) object;
+        return Objects.equals(book_ID, that.book_ID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(book_ID);
+    }
+
     @Override
     public String toString() {
         return "Book= " +
@@ -101,6 +126,7 @@ abstract public class AbstractBook {
                 ", price=" + price +
                 ", status=" + status +
                 ", edition=" + edition +
-                ", date_of_purchase=" + date_of_purchase;
+                ", date_of_purchase=" + date_of_purchase +
+                ", owner=" + (owner != null ? owner.getName() : "library");
     }
 }

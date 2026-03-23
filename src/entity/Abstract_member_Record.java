@@ -1,20 +1,22 @@
 package entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 abstract public class Abstract_member_Record {
     private Long member_ID;
     private String type;
     private LocalDateTime date_of_membership;
-    private Integer books_issued;
+    private List<AbstractBook> books_issued;
     private Integer max_book_limit;
     private String name;
     private String address;
     private String phone_number;
 
     public Abstract_member_Record(Long member_ID, String type, LocalDateTime date_of_membership,
-                                  Integer books_issued, Integer max_book_limit, String name,
+                                  List<AbstractBook> books_issued, Integer max_book_limit, String name,
                                   String address, String phone_number) {
         this.member_ID = member_ID;
         this.type = type;
@@ -25,6 +27,23 @@ abstract public class Abstract_member_Record {
         this.address = address;
         this.phone_number = phone_number;
     }
+
+    //Task-1
+
+    //Task-2
+    public void addBookIssued(AbstractBook book){
+        List<AbstractBook> newList = new ArrayList<>(books_issued);
+        newList.add(book);
+        setBooks_issued(newList);
+    }
+    //Task-3
+    public void removeBookIssued(AbstractBook book){
+        List<AbstractBook> booksBorrowed = new ArrayList<>(books_issued);
+        booksBorrowed.remove(book);
+        setBooks_issued(booksBorrowed);
+    }
+    //Task-4
+
 
     //Setter
     public void setMember_ID(Long member_ID) {
@@ -39,7 +58,7 @@ abstract public class Abstract_member_Record {
         this.date_of_membership = date_of_membership;
     }
 
-    public void setBooks_issued(Integer books_issued) {
+    public void setBooks_issued(List<AbstractBook> books_issued) {
         this.books_issued = books_issued;
     }
 
@@ -72,7 +91,8 @@ abstract public class Abstract_member_Record {
         return date_of_membership;
     }
 
-    public Integer getBooks_issued() {
+    public List<AbstractBook> getBooks_issued() {
+
         return books_issued;
     }
 

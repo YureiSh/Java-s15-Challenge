@@ -1,15 +1,17 @@
 package entity.concrete;
 
+import entity.AbstractBook;
 import entity.Abstract_member_Record;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class StudentRecord extends Abstract_member_Record {
 
     private static final int MAX_LIMIT = 5;
     public StudentRecord(Long member_ID,
                          LocalDateTime date_of_membership,
-                         Integer books_issued,
+                         List<AbstractBook> books_issued,
                          String name,
                          String address,
                          String phone_number) {

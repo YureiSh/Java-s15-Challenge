@@ -3,6 +3,12 @@ package utils;
 public class ValidationUtil {
     private ValidationUtil(){}
 
+    public static void accessRequired(Boolean bool, String message){
+
+        if(bool == false)
+            throw new IllegalArgumentException(message);
+    }
+
     public static void requireNonNull(Object obj, String message){
 
         if(obj == null)
